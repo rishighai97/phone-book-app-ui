@@ -1,0 +1,80 @@
+<div class="d-flex justify-content-between">
+  <div class="d-flex">
+    <h4>New Contact</h4>
+  </div>
+  <div class="d-flex">
+    <button (click)="close()" class="button-hide">
+      <span class="fa fa-close fa-lg flex-row"></span>
+    </button>
+  </div>
+</div>
+
+<hr />
+
+<form [formGroup]="saveContactForm" (submit)="save()">
+  <div class="form-group">
+    <div class="d-flex m-top-2">
+      <input
+        formControlName="firstName"
+        class="form-control"
+        placeholder="First Name"
+      />
+    </div>
+    <div
+      class="d-flex text-danger m-top-2"
+      *ngIf="
+        submitAttempted &&
+        saveContactForm.controls['firstName'].hasError('required')
+      "
+    >
+      Please enter contact's first name
+    </div>
+    <div class="d-flex m-top-2">
+      <input
+        formControlName="lastName"
+        class="form-control"
+        placeholder="Last Name"
+      />
+    </div>
+    <div
+      class="d-flex text-danger m-top-2"
+      *ngIf="
+        submitAttempted &&
+        saveContactForm.controls['lastName'].hasError('required')
+      "
+    >
+      Please enter contact's last name
+    </div>
+    <div class="d-flex m-top-2">
+      <input
+        formControlName="phoneNumber"
+        class="form-control"
+        placeholder="Phone number"
+        type="number"
+      />
+    </div>
+    <div
+      class="d-flex text-danger m-top-2"
+      *ngIf="
+        submitAttempted &&
+        saveContactForm.controls['phoneNumber'].hasError('required')
+      "
+    >
+      Please enter contact's phone number
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="d-flex justify-content-end">
+    <button class="btn btn-primary" style="margin-left: 1%">Create</button>
+
+    <button
+      class="btn btn-light"
+      style="background-color: #6b757d; color: white"
+      (click)="close()"
+    >
+      Cancel
+    </button>
+  </div>
+</form>

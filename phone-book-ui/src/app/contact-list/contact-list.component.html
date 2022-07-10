@@ -1,0 +1,4 @@
+<div *ngFor="let contact of getContacts()">
+    <app-contact (deleteContact)="deleteContact($event)" [contact]="contact">
+    </app-contact>    
+</div>
